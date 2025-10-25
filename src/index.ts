@@ -1,5 +1,4 @@
-import express, { Request, Response } from 'express';
-
+const express = require('express');
 const app = express();
 const PORT = 3001;
 
@@ -24,7 +23,7 @@ const todos: Todo[] = [
 app.use(express.json());
 
 // Routes
-app.get('/todos', (req: Request, res: Response): void => {
+app.get('/todos', (req: any, res: any): void => {
   // Get random number of todos (1-5)
   const randomCount = Math.floor(Math.random() * 5) + 1;
   const randomTodos = todos.sort(() => 0.5 - Math.random()).slice(0, randomCount);
@@ -32,7 +31,7 @@ app.get('/todos', (req: Request, res: Response): void => {
 });
 
 // Health check endpoint
-app.get('/', (req: Request, res: Response): void => {
+app.get('/', (req: any, res: any): void => {
   res.json({ message: 'Express server is running!' });
 });
 
